@@ -1,0 +1,23 @@
+#formspree-eager {
+  width: 50%;
+  margin: auto;
+  font-size: 1.3em;
+}
+#formspree-eager input {
+  width: 100%;
+  font-size: inherit;
+  margin-bottom: 3px;
+}
+#formspree-eager textarea {
+  width: 100%;
+  padding: 1px;
+  line-height: 1.3em;
+  font-size: inherit;
+}
+#formspree-eager button {
+  margin: auto;
+  display: block;
+  width: 50%;
+  padding: 0.2em;
+  font-size: inherit;
+}

@@ -1,0 +1,51 @@
+{
+  "resources": {
+    "head": [
+      {
+        "type": "style",
+        "src": "./form.css"
+      }
+    ],
+    "body": [
+      {
+        "type": "script",
+        "src": "./script.js"
+      }
+    ]
+  },
+  "options": {
+    "properties": {
+      "email": {
+        "title": "Email address to send the form contents to",
+        "type": "string",
+        "default": "you@example.com"
+      },
+      "container": {
+        "title": "Location of the page to insert the form",
+        "type": "object",
+        "format": "element"
+      },
+      "elements": {
+        "title": "Form fields",
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "boolean",
+            "default": false
+          },
+          "email": {
+            "title": "email",
+            "type": "boolean",
+            "default": true
+          },
+          "message": {
+            "title": "Message",
+            "type": "boolean",
+            "default": true
+          }
+        }
+      }
+    }
+  }
+}
