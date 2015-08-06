@@ -1,5 +1,5 @@
 (function(){
-  if (!window.addEventListener || !document.documentElement.setAttribute || !document.querySelector || !document.documentElement.classList || !document.documentElement.classList.add) {
+  if (!window.addEventListener || !document.documentElement.setAttribute || !document.querySelector) {
     return
   }
 
