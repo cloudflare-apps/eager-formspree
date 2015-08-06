@@ -4,10 +4,7 @@
       {
         "type": "style",
         "src": "./form.css"
-      }
-    ],
-    "body": [
-      {
+      }, {
         "type": "script",
         "src": "./script.js"
       }
@@ -16,35 +13,48 @@
   "options": {
     "properties": {
       "email": {
-        "title": "Email address to send the form contents to",
+        "order": 1,
+        "title": "Email address to send responses to",
         "type": "string",
-        "default": "you@example.com"
+        "default": "your@email.com"
       },
       "container": {
-        "title": "Location of the page to insert the form",
+        "order": 2,
+        "title": "Location of the page to place the form",
         "type": "object",
         "format": "element"
       },
       "elements": {
-        "title": "Form fields",
+        "order": 3,
+        "title": "Fields to include in the form",
         "type": "object",
         "properties": {
           "name": {
+            "order": 1,
             "title": "Name",
             "type": "boolean",
             "default": false
           },
           "email": {
-            "title": "email",
+            "order": 2,
+            "title": "Email",
             "type": "boolean",
             "default": true
           },
           "message": {
+            "order": 3,
             "title": "Message",
             "type": "boolean",
             "default": true
           }
         }
+      },
+      "color": {
+        "order": 4,
+        "title": "Accent color",
+        "type": "string",
+        "format": "color",
+        "default": "#1593ff"
       }
     }
   }
