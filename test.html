@@ -1,0 +1,34 @@
+<head>
+  <meta charset="utf-8">
+  <style>
+    body { font-family: Arial, sans-serif }
+  </style>
+  <link rel="stylesheet" href="form.css">
+</head>
+
+<body>
+  <script>
+    INSTALL_OPTIONS = {
+      "email": "your@email.com",
+      "container": {
+        "selector": "body",
+        "method": "append"
+      },
+      "elements": {
+        "name": true,
+        "email": true,
+        "message": true
+      },
+      "color": "#1593ff"
+    };
+
+    Eager = {
+      createElement: function() {
+        eagerAppEl = document.createElement('eager-app');
+        document.body.appendChild(eagerAppEl);
+        return eagerAppEl;
+      }
+    };
+  </script>
+  <script src="script.js"></script>
+</body>
