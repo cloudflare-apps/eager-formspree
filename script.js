@@ -35,7 +35,7 @@
     (options.fields.email ? '<input type="email" name="_replyto" spellcheck="false" placeholder="' + (options.fields.emailPlaceholderText || '') + '" required>' : '') +
     (options.fields.message ? '<textarea name="message" rows="5" spellcheck="false" placeholder="' + (options.fields.messagePlaceholderText || '') + '" required></textarea>' : '') +
     '<input type="text" name="_gotcha" style="display: none">' +
-    '<button type="submit">Submit</button>'
+    '<button type="submit">' + (options.buttonText || '') + '</button>'
   );
 
   form.addEventListener('submit', function(event){
