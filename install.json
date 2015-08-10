@@ -15,8 +15,9 @@
       "email": {
         "order": 1,
         "title": "Email address to send responses to",
+        "description": "<strong>Required</strong>. e.g. <em>your@email.com</em><br>",
         "type": "string",
-        "default": "your@email.com"
+        "default": ""
       },
       "container": {
         "order": 2,
@@ -24,8 +25,34 @@
         "type": "object",
         "format": "element"
       },
-      "elements": {
+      "color": {
         "order": 3,
+        "title": "Accent color",
+        "type": "string",
+        "format": "color",
+        "default": "#1593ff"
+      },
+      "darkTheme": {
+        "order": 4,
+        "title": "Dark theme",
+        "type": "boolean",
+        "default": false
+      },
+      "headerText": {
+        "order": 5,
+        "title": "Header text",
+        "type": "string",
+        "default": "Contact Us"
+      },
+      "bodyText": {
+        "order": 6,
+        "title": "Body text",
+        "type": "string",
+        "format": "textarea",
+        "default": "Send us a message using the form below."
+      },
+      "fields": {
+        "order": 7,
         "title": "Fields to include in the form",
         "type": "object",
         "properties": {
@@ -35,26 +62,61 @@
             "type": "boolean",
             "default": false
           },
-          "email": {
+          "namePlaceholderText": {
+            "showIf": {
+              "fields.name": true
+            },
             "order": 2,
+            "title": "Placeholder text",
+            "type": "string",
+            "default": "Name"
+          },
+
+          "email": {
+            "order": 3,
             "title": "Email",
             "type": "boolean",
             "default": true
           },
+          "emailPlaceholderText": {
+            "showIf": {
+              "fields.email": true
+            },
+            "order": 4,
+            "title": "Placeholder text",
+            "type": "string",
+            "default": "Email"
+          },
+
           "message": {
-            "order": 3,
+            "order": 5,
             "title": "Message",
             "type": "boolean",
             "default": true
+          },
+          "messagePlaceholderText": {
+            "showIf": {
+              "fields.message": true
+            },
+            "order": 6,
+            "title": "Placeholder text",
+            "type": "string",
+            "default": "Message"
           }
         }
       },
-      "color": {
-        "order": 4,
-        "title": "Accent color",
+      "buttonText": {
+        "order": 8,
+        "title": "Button text",
         "type": "string",
-        "format": "color",
-        "default": "#1593ff"
+        "default": "Send →"
+      },
+      "successText": {
+        "order": 9,
+        "title": "Thank you text",
+        "description": "This text will display after visitors enter their email.",
+        "type": "string",
+        "default": "Thanks for sending! :)"
       }
     }
   }

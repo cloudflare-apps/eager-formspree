@@ -14,24 +14,26 @@
   isPreview = window.Eager && window.Eager.installs && window.Eager.installs.preview && window.Eager.installs.preview.appId === 'EBgHgduLB0Zn';
 
   style = document.createElement('style');
-  style.innerHTML = '' +
+  style.innerHTML = (
   ' html .eager-formspree button {' +
   '   background: ' + options.color + ' !important' +
   ' }' +
   ' html .eager-formspree input:focus, .eager-formspree textarea:focus {' +
   '   box-shadow: 0 0 0 .0625em ' + options.color + ', 0 0 .1875em .0625em ' + options.color + ' !important' +
-  ' }' +
-  '';
+  ' }'
+  );
 
   form = form = document.createElement('form');
   form.addEventListener('touchstart', function(){}, false); // iOS :hover CSS hack
-  form.className = 'eager-formspree';
+  form.className = 'eager-formspree' + (options.darkTheme ? ' eager-formspree-dark-theme' : '');
   form.setAttribute('method', 'POST');
   form.setAttribute('action', '//formspree.io/' + options.email);
   form.innerHTML = (
-    (options.elements.name ? '<input type="text" name="name" spellcheck="false" placeholder="Name" required>' : '') +
-    (options.elements.email ? '<input type="email" name="_replyto" spellcheck="false" placeholder="Email" required>' : '') +
-    (options.elements.message ? '<textarea name="message" rows="5" spellcheck="false" placeholder="Message" required></textarea>' : '') +
+    (options.headerText ? '<div class="eager-formspree-header-text">' + options.headerText + '</div>' : '') +
+    (options.bodyText ? '<div class="eager-formspree-body-text">' + options.bodyText + '</div>' : '') +
+    (options.fields.name ? '<input type="text" name="name" spellcheck="false" placeholder="' + (options.fields.namePlaceholderText || '') + '" required>' : '') +
+    (options.fields.email ? '<input type="email" name="_replyto" spellcheck="false" placeholder="' + (options.fields.emailPlaceholderText || '') + '" required>' : '') +
+    (options.fields.message ? '<textarea name="message" rows="5" spellcheck="false" placeholder="' + (options.fields.messagePlaceholderText || '') + '" required></textarea>' : '') +
     '<input type="text" name="_gotcha" style="display: none">' +
     '<button type="submit">Submit</button>'
   );
@@ -46,7 +48,7 @@
     xhr = new XMLHttpRequest();
 
     if (isPreview) {
-      form.innerHTML = '<p>Form submissions are simulated during the Eager preview.</p>';
+      form.innerHTML = '<div class="eager-formspree-body-text">Form submissions are simulated during the Eager preview.</div>';
       return;
     }
 
@@ -62,21 +64,21 @@
           } catch (err) {}
         }
         if (jsonResponse && jsonResponse.success === 'confirmation email sent') {
-          form.innerHTML = '<p>Formspree has sent an email to ' + options.email + ' for verification.</p>';
+          form.innerHTML = '<div class="eager-formspree-header-text">Success!</div><div class="eager-formspree-body-text">Formspree has sent an email to ' + options.email + ' for verification.</div>';
         } else {
-          form.innerHTML = '<p>Thanks for submitting!</p>';
+          form.innerHTML = '<div class="eager-formspree-body-text">' + options.successText + '</div>';
         }
       }
     };
 
     params = [];
-    if (options.elements.name) {
+    if (options.fields.name) {
       params.push('name=' + encodeURIComponent(form.querySelector('input[name="name"]').value));
     }
-    if (options.elements.email) {
+    if (options.fields.email) {
       params.push('email=' + encodeURIComponent(form.querySelector('input[type="email"]').value));
     }
-    if (options.elements.message) {
+    if (options.fields.message) {
       params.push('message=' + encodeURIComponent(form.querySelector('textarea[name="message"]').value));
     }
 
