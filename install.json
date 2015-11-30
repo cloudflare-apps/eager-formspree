@@ -10,6 +10,14 @@
       }
     ]
   },
+  "preview": {
+    "handlers": [
+      {
+        "options": ["*"],
+        "execute": "INSTALL_SCOPE.setOptions(INSTALL_OPTIONS)"
+      }
+    ]
+  },
   "options": {
     "properties": {
       "email": {
@@ -116,7 +124,7 @@
         "title": "Thank you text",
         "description": "This text will display after visitors enter their email.",
         "type": "string",
-        "default": "Thanks for sending! :)"
+        "default": "Thanks for contacting us, we’ll be in touch soon!"
       }
     }
   }
